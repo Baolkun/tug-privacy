@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tug Gizlilik Politikası</title>
+<meta name="description" content="Tug hiçbir veri toplamaz. Uygulamanın internet bağlantısı yoktur. / Tug collects no data and makes no network requests.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233B4552'/%3E%3Crect x='6' y='13' width='13' height='8' rx='2' fill='%2311889B'/%3E%3Crect x='21' y='12' width='6' height='10' rx='1.5' fill='%23F0913F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground:   #E7DECD;
+    --floor:    #F7F2E8;
+    --edge:     #D6C9B2;
+    --asphalt:  #3B4552;
+    --asphalt2: #5C6875;
+    --ink:      #463E35;
+    --dim:      #8B8071;
+    --teal:     #11889B;
+    --orange:   #C66C25;
+    --rule:     rgba(70, 62, 53, 0.14);
+    --card-shadow: 0 1px 0 rgba(70, 62, 53, .10), 0 10px 26px -18px rgba(59, 69, 82, .55);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:   #262C34;
+      --floor:    #303842;
+      --edge:     #3E4854;
+      --asphalt:  #1C222A;
+      --asphalt2: #39424E;
+      --ink:      #E9E2D4;
+      --dim:      #9AA0A8;
+      --teal:     #47B7C9;
+      --orange:   #E89A55;
+      --rule:     rgba(233, 226, 212, 0.16);
+      --card-shadow: 0 1px 0 rgba(0, 0, 0, .28), 0 10px 26px -18px rgba(0, 0, 0, .8);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 17px/1.62 Barlow, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .band {
+    background: var(--asphalt);
+    border-bottom: 3px solid var(--teal);
+  }
+  .band__inner {
+    max-width: 47rem;
+    margin: 0 auto;
+    padding: 30px 16px 26px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px 18px;
+  }
+  .wordmark {
+    margin: 0;
+    font-family: "Barlow Condensed", Barlow, sans-serif;
+    font-weight: 700;
+    font-size: clamp(34px, 9vw, 46px);
+    line-height: 1;
+    letter-spacing: .06em;
+    color: #F7F2E8;
+  }
+  .wordmark span { color: var(--teal); }
+  .tagline {
+    margin: 0;
+    font-family: "Barlow Condensed", Barlow, sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #B3BAC3;
+  }
+
+  .langbar { display: none; margin-left: auto; gap: 8px; }
+  .js .langbar { display: flex; }
+  .langbar button {
+    font: 600 13px/1 "Barlow Condensed", Barlow, sans-serif;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #C6CCD4;
+    background: transparent;
+    border: 1px solid rgba(247, 242, 232, .28);
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+  .langbar button:hover { color: #F7F2E8; border-color: rgba(247, 242, 232, .6); }
+  .langbar button[aria-pressed="true"] {
+    color: #10242A;
+    background: var(--teal);
+    border-color: var(--teal);
+  }
+  .langbar button:focus-visible,
+  a:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+  main { max-width: 47rem; margin: 0 auto; padding: 0 16px 72px; }
+
+  .js .doc.is-off { display: none; }
+
+  .doc > h1 {
+    font-family: "Barlow Condensed", Barlow, sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 6.4vw, 38px);
+    line-height: 1.1;
+    letter-spacing: .01em;
+    text-wrap: balance;
+    margin: 40px 0 6px;
+  }
+  .stamp {
+    margin: 0 0 30px;
+    font-family: "Barlow Condensed", Barlow, sans-serif;
+    font-size: 15px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  .answer {
+    background: var(--floor);
+    border: 1px solid var(--edge);
+    border-left: 5px solid var(--teal);
+    border-radius: 4px 12px 12px 4px;
+    box-shadow: var(--card-shadow);
+    padding: 22px 24px;
+    margin: 0 0 40px;
+  }
+  .answer p { margin: 0; }
+  .answer p + p { margin-top: 10px; color: var(--dim); font-size: 16px; }
+  .answer strong {
+    font-family: "Barlow Condensed", Barlow, sans-serif;
+    font-weight: 700;
+    font-size: 1.28em;
+    letter-spacing: .01em;
+  }
+
+  section { border-top: 1px solid var(--rule); padding-top: 26px; margin-top: 30px; }
+  section:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+
+  h2 {
+    font-family: "Barlow Condensed", Barlow, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 0 0 12px;
+  }
+  p { margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0 0 14px; padding-left: 0; list-style: none; }
+  li { position: relative; padding-left: 26px; margin-bottom: 9px; }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: .62em;
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    background: var(--orange);
+  }
+
+  a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+  footer {
+    max-width: 47rem;
+    margin: 0 auto;
+    padding: 0 16px 56px;
+    color: var(--dim);
+    font-size: 15px;
+  }
+  footer hr { border: 0; border-top: 1px solid var(--rule); margin: 0 0 18px; }
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add("js");</script>
+
+<div class="band">
+  <div class="band__inner">
+    <p class="wordmark">TUG<span>.</span></p>
+    <p class="tagline">Yükleme Sahası</p>
+    <nav class="langbar" aria-label="Dil / Language">
+      <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+<article class="doc" id="tr" lang="tr">
+  <h1>Gizlilik Politikası</h1>
+  <p class="stamp">Son güncelleme: 30 Eylül 2026</p>
+
+  <div class="answer">
+    <p><strong>Tug hiçbir veri toplamaz.</strong></p>
+    <p>Uygulamanın içinde internet bağlantısı yoktur. Oynarken ürettiğin hiçbir bilgi telefonundan çıkmaz.</p>
+  </div>
+
+  <section>
+    <h2>Toplanan kişisel veri</h2>
+    <p>Yok. Tug senden ad, e-posta, telefon numarası ya da başka bir kişisel bilgi istemez. Hesap açman gerekmez.</p>
+    <p>Uygulama telefonundan hiçbir izin istemez: konum, kişiler, fotoğraflar, kamera, mikrofon ve bildirimlerin hiçbirine erişmez. Reklam kimliğini (IDFA) okumaz.</p>
+  </section>
+
+  <section>
+    <h2>Telefonda kalanlar</h2>
+    <p>Oyunun çalışması için birkaç şey cihazın içinde, uygulamanın kendi alanında saklanır:</p>
+    <ul>
+      <li>ilerlemen — açılan bölümler, kazandığın yıldızlar ve jetonlar;</li>
+      <li>ayarların — ses, dil ve seçtiğin araç;</li>
+      <li>oynanış sayıları — bölüm başına hamle, geri alma ve süre gibi, bölümlerin zorluğunu ayarlamaya yarayan sayılar.</li>
+    </ul>
+    <p>Bunların hiçbiri bir sunucuya gönderilmez; sunucu diye bir şey yoktur. Hepsi yalnız senin cihazında durur ve uygulamayı sildiğinde onunla birlikte silinir.</p>
+  </section>
+
+  <section>
+    <h2>İnternet, izleme ve üçüncü taraflar</h2>
+    <p>Tug ağ isteği yapmaz. İçinde analiz aracı (SDK), reklam ağı, sosyal medya bağlantısı veya izleme kodu yoktur. Verin hiç kimseyle paylaşılmaz ve satılmaz, çünkü ortada paylaşılacak bir veri yoktur.</p>
+  </section>
+
+  <section>
+    <h2>Reklam ve satın alma</h2>
+    <p>Uygulamada reklam yoktur ve uygulama içi satın alma yoktur.</p>
+  </section>
+
+  <section>
+    <h2>Çocuklar</h2>
+    <p>Tug hiç kimseden veri toplamadığı için çocuklardan da veri toplamaz. Oyun her yaşa uygundur.</p>
+  </section>
+
+  <section>
+    <h2>Apple tarafı</h2>
+    <p>Uygulamayı App Store'dan indirmen, güncellemen veya çökme raporu göndermen Apple ile senin aranda gerçekleşir ve <a href="https://www.apple.com/legal/privacy/">Apple'ın gizlilik politikasına</a> tabidir. Geliştiriciye bunlardan yalnızca toplu ve kimliksiz sayılar ulaşır — kaç indirme, kaç çökme gibi. Kimin indirdiğini göremeyiz.</p>
+  </section>
+
+  <section>
+    <h2>Değişiklikler</h2>
+    <p>Bu politika değişirse yukarıdaki tarih güncellenir. Veri toplamaya başlanması gibi bir değişiklik olursa, uygulamanın kendi içinde de belirtilir.</p>
+  </section>
+
+  <section>
+    <h2>İletişim</h2>
+    <p>Sorun, öneri ya da şikâyet için: <a href="mailto:lenzy.appp@gmail.com">lenzy.appp@gmail.com</a></p>
+  </section>
+</article>
+
+<article class="doc" id="en" lang="en">
+  <h1>Privacy Policy</h1>
+  <p class="stamp">Last updated: 30 September 2026</p>
+
+  <div class="answer">
+    <p><strong>Tug collects no data.</strong></p>
+    <p>The app has no internet connection of any kind. Nothing you produce while playing ever leaves your phone.</p>
+  </div>
+
+  <section>
+    <h2>Personal data collected</h2>
+    <p>None. Tug never asks for your name, email address, phone number or any other personal detail. There is no account to create and no sign-in.</p>
+    <p>The app requests no permissions from your phone: it does not access your location, contacts, photos, camera, microphone or notifications, and it does not read your advertising identifier (IDFA).</p>
+  </section>
+
+  <section>
+    <h2>What stays on your phone</h2>
+    <p>A few things are stored on the device, inside the app's own storage, so that the game works:</p>
+    <ul>
+      <li>your progress — which levels are unlocked, the stars and tokens you have earned;</li>
+      <li>your settings — sound, language and the truck you picked;</li>
+      <li>gameplay counts — moves, undos and time per level, which are used to tune how hard the levels are.</li>
+    </ul>
+    <p>None of it is sent to a server; there is no server. It all stays on your device and is deleted along with the app when you remove it.</p>
+  </section>
+
+  <section>
+    <h2>Network, tracking and third parties</h2>
+    <p>Tug makes no network requests. It contains no analytics SDK, no ad network, no social media integration and no tracking code. Nothing about you is shared or sold, because there is nothing to share.</p>
+  </section>
+
+  <section>
+    <h2>Advertising and purchases</h2>
+    <p>The app contains no advertising and no in-app purchases.</p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>Because Tug collects no data from anyone, it collects no data from children either. The game is suitable for all ages.</p>
+  </section>
+
+  <section>
+    <h2>Apple's side</h2>
+    <p>Downloading the app, updating it or sending a crash report happens between you and Apple, and is covered by <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. Only aggregate, anonymous figures reach the developer from this — how many downloads, how many crashes. We cannot see who downloaded it.</p>
+  </section>
+
+  <section>
+    <h2>Changes</h2>
+    <p>If this policy changes, the date above is updated. Any change that means data is collected would also be stated inside the app itself.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>For questions, suggestions or complaints: <a href="mailto:lenzy.appp@gmail.com">lenzy.appp@gmail.com</a></p>
+  </section>
+</article>
+
+</main>
+
+<footer>
+  <hr>
+  <p>Tug &middot; <a href="mailto:lenzy.appp@gmail.com">lenzy.appp@gmail.com</a></p>
+</footer>
+
+<script>
+(function () {
+  var docs = { tr: document.getElementById("tr"), en: document.getElementById("en") };
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".langbar button"));
+
+  function show(lang, push) {
+    if (lang !== "en") { lang = "tr"; }
+    Object.keys(docs).forEach(function (key) {
+      docs[key].classList.toggle("is-off", key !== lang);
+    });
+    buttons.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+    });
+    document.documentElement.lang = lang;
+    document.title = lang === "en" ? "Tug Privacy Policy" : "Tug Gizlilik Politikası";
+    if (push && location.hash !== "#" + lang) { history.replaceState(null, "", "#" + lang); }
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { show(b.dataset.lang, true); });
+  });
+  window.addEventListener("hashchange", function () { show(location.hash.slice(1), false); });
+
+  show(location.hash.slice(1) || "tr", false);
+}());
+</script>
+</body>
+</html>
